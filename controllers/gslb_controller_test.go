@@ -99,7 +99,7 @@ var fakeDNSSettings = utils.FakeDNSSettings{
 	DNSZoneFQDN:     "cloud.example.com.",
 }
 
-const coreDNSExtServiceName = "k8gb-coredns-lb"
+const coreDNSExtServiceName = "k8gb-coredns"
 
 func TestNotFoundServiceStatus(t *testing.T) {
 	// arrange
