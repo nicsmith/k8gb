@@ -69,6 +69,10 @@ This setup is adapted for local scenario and works without external DNS provider
 
 Consult with [local playground](/docs/local.md) documentation to learn all the details of experimenting with local setup.
 
+## Upgrade
+
+See [upgrade notes](./docs/upgrade.md)
+
 ## Motivation and Architecture
 
 k8gb was born out of need for an open source, cloud native GSLB solution at Absa bank in South Africa.
