@@ -18,6 +18,7 @@ package v1beta1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	gateway "sigs.k8s.io/gateway-api/apis/v1alpha1"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
@@ -41,6 +42,14 @@ type Strategy struct {
 type GslbSpec struct {
 	// Gslb-enabled Ingress Spec
 	Ingress IngressSpec `json:"ingress"`
+	// Gslb-enabled Gateway
+	Gateway gateway.GatewaySpec `json:"gateway"`
+	// Gslb-enabled HTTPRoute
+	HTTPRoute gateway.HTTPRouteSpec `json:"httproute"`
+	// Gslb-enabled TCPRoute
+	TCPRoute gateway.TCPRouteSpec `json:"tcproute"`
+	// Gslb-enabled UDPRoute
+	UDPRoute gateway.UDPRouteSpec `json:"udproute"`
 	// Gslb Strategy spec
 	Strategy Strategy `json:"strategy"`
 }

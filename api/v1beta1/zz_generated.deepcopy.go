@@ -89,6 +89,10 @@ func (in *GslbList) DeepCopyObject() runtime.Object {
 func (in *GslbSpec) DeepCopyInto(out *GslbSpec) {
 	*out = *in
 	in.Ingress.DeepCopyInto(&out.Ingress)
+	in.Gateway.DeepCopyInto(&out.Gateway)
+	in.HTTPRoute.DeepCopyInto(&out.HTTPRoute)
+	in.TCPRoute.DeepCopyInto(&out.TCPRoute)
+	in.UDPRoute.DeepCopyInto(&out.UDPRoute)
 	out.Strategy = in.Strategy
 }
 

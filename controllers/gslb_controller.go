@@ -131,14 +131,18 @@ func (r *GslbReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.
 	}
 
 	// == Ingress ==========
-	ingress, err := r.gslbIngress(gslb)
-	if err != nil {
-		return result.RequeueError(err)
+	if len(gslb.Spec.Ingress.Rules) > 0 {
+		err = r.processIngress(gslb)
+		if err != nil {
+			return result.RequeueError(err)
+		}
 	}
-
-	err = r.saveIngress(gslb, ingress)
-	if err != nil {
-		return result.RequeueError(err)
+	// == Gateway ==========
+	if len(gslb.Spec.Gateway.Listeners) > 0 {
+		err = r.processGateway(gslb)
+		if err != nil {
+			return result.RequeueError(err)
+		}
 	}
 
 	// == external-dns dnsendpoints CRs ==
