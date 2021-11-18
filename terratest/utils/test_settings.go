@@ -21,10 +21,8 @@ type TestSettings struct {
 	DNSZone         string
 	PrimaryGeoTag   string
 	SecondaryGeoTag string
-	DNSServer1      string
-	Port1           int
-	DNSServer2      string
-	Port2           int
+	DNSServer       string
+	Port            int
 	Cluster1        string
 	Cluster2        string
 	PodinfoImage    string

@@ -416,6 +416,7 @@ define deploy-k8gb-with-helm
 		--set rfc2136.enabled=true \
 		--set k8gb.edgeDNSServers[0]=host.k3d.internal:1053 \
 		--set k8gb.log.format=$(LOG_FORMAT) \
+		--set externaldns.image=absaoss/external-dns:rfc-ns1
 		--set k8gb.log.level=$(LOG_LEVEL) \
 		--wait --timeout=2m0s
 endef
