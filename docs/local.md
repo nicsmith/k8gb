@@ -22,7 +22,7 @@ For more user-centric targets in that makefile consult `make help`.
 
 ## Environment prerequisites
 
-- [Install **Go 1.16**](https://golang.org/dl/)
+- [Install **Go 1.19**](https://golang.org/dl/)
 
 - [Install **Git**](https://git-scm.com/downloads)
 
@@ -45,7 +45,7 @@ For more user-centric targets in that makefile consult `make help`.
 
  - [install **helm3**](https://helm.sh/docs/intro/install/) to deploy k8gb and related test workloads
 
- - [install **k3d**](https://k3d.io/#installation) to run local [k3s](https://k3s.io/) clusters (minimum v5.1.0 version is required)
+ - [install **k3d**](https://k3d.io/#installation) to run local [k3s](https://k3s.io/) clusters (minimum v5.3.0 version is required)
 
  - [install **golangci-lint**](https://golangci-lint.run/usage/install/#local-installation) for code quality checks
 
@@ -71,7 +71,7 @@ Cluster [edgedns](https://github.com/k8gb-io/k8gb/tree/master/k3d/edge-dns.yaml)
 on port `:1053`.
 
 ```sh
-dig @localhost -p 1053 roundrobin.cloud.example.com +short
+dig @localhost -p 1053 roundrobin.cloud.example.com +short +tcp
 ```
 Should return ***two A records*** from both clusters (IP addresses and order may differ):
 ```
@@ -98,7 +98,8 @@ k3d-test-gslb2-agent-0    172.20.0.5
 
 Or you can ask specific CoreDNS instance for its local targets:
 ```sh
-dig @localhost localtargets-roundrobin.cloud.example.com -p 5053 && dig -p 5054 @localhost localtargets-roundrobin.cloud.example.com
+dig -p 5053 +tcp @localhost localtargets-roundrobin.cloud.example.com && \
+dig -p 5054 +tcp @localhost localtargets-roundrobin.cloud.example.com
 ```
 As expected result you should see **two A records** divided between both clusters.
 ```sh
